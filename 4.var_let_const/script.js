@@ -49,14 +49,32 @@ var 나이 이 부분을 선언한 부분 맨위로 */
 /* 함수도 마찬가지 */
 
 var 나이 = 20,
-  성별 = 남;
+  성별 = "남";
 
 /* 전역변수 모든 곳에서 쓸 수 있는 함수 */
 
 function 함수() {
-  console, log(나이);
+  console.log(나이);
 }
 
 함수();
 
 window.이름 = "kim";
+
+for (let i = 1; i < 6; i++) {
+  setTimeout(function () {
+    console.log(i);
+  }, i * 1000);
+}
+
+var 버튼들 = document.querySelectorAll("button");
+var 모달창들 = document.querySelectorAll("div");
+
+for (let i = 0; i < 3; i++) {
+  버튼들[i].addEventListener("click", function () {
+    모달창들[i].style.display = "block";
+  });
+}
+
+
+/* 선언만 호이스팅 */
