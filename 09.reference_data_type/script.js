@@ -65,3 +65,4 @@ function 변경(obj) {
 
 변경(이름e);
 console.log(이름e);
+
