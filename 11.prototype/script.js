@@ -56,3 +56,66 @@ console.log("arr 부모에 내장함수::", Array.prototype);
 /* 객체도 마찬가지 */
 var obj = { name: "kar" };
 var obj = new Object();
+
+/* prototype 특징2 */
+/* 함수에만 몰래 생성 */
+/* 내 부모의 유전자(prototype)이 궁금할 때  검사하고 싶으면 
+~~.__proto__*/
+
+/* __proto__를 이용해 부모님 강제 등록 */
+
+var 부모 = { name: "kar" };
+var 자식 = {};
+자식.__proto__ = 부모;
+
+console.log("자식 이름:::", 자식.name);
+
+/* constructor, prototype 문제 풀이 */
+
+function Student(a, b) {
+  this.name = a;
+  this.age = b;
+  this.sayHi1 = function () {};
+  console.log("안녕 나는 " + this.name + " 이야");
+}
+
+var 학생a = new Student("kim", 20);
+var 학생b = new Student("park", 21);
+var 학생c = new Student("lee", 22);
+
+function Parent() {
+  this.name = "Kim";
+}
+var a = new Parent();
+
+a.__proto__.name = "Park";
+console.log("내 답은 park:::", a.name);
+/* 틀림 부모에 주는 거지 내가 가지고 있는 거 먼저 출력 */
+
+function Student2(이름, 나이) {
+  this.name = 이름;
+  this.age = 나이;
+}
+
+Student2.prototype.sayHi = () => {
+  console.log("안녕 나는 " + this.name + "이야");
+};
+var 학생d = new Student2("Kim", 20);
+
+학생d.sayHi();
+/* arrow function은 최상단의 객체를 가르킴 여기서는 윈도우 */
+
+var arr2 = [1, 2, 3];
+
+Array.prototype.remove3 = function () {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] === 3) {
+      this.splice(i, 1);
+      i--;
+    }
+  }
+};
+
+arr2.remove3();
+
+console.log(arr2); //[1,2]
