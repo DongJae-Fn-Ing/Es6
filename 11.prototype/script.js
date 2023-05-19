@@ -103,7 +103,7 @@ Student2.prototype.sayHi = () => {
 var 학생d = new Student2("Kim", 20);
 
 학생d.sayHi();
-/* arrow function은 최상단의 객체를 가르킴 여기서는 윈도우 */
+/* arrow function은 최상단의 객체를. 가르킴 여기서는 윈도우 */
 
 var arr2 = [1, 2, 3];
 
