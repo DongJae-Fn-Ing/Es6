@@ -68,7 +68,7 @@ btn.addEventListener("click", function (e) {
     console.log(":::case", a);
     /* 여기서 즉 일반 함수 안에서 this를 쓰면? */
     console.log(":::window", this);
-    /* 그냥 일반 함수 안에서 this를 사용하면 window가 나온다 */
+    /* 그냥 일반 함수 안에서 this를 사용하면 window가 나온다. */
   });
 });
 
