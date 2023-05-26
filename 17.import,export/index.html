@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17.import,export</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <!-- 그러나 es6부터 다른 파일 첨부 방식을 사용 -->
+  <script type="module">
+    /*     import aaa from './library.js'; */
+    /* 여기서 이름 바꿔도 작동 즉 default export 한건 자유롭게 작명 가능 */
+
+    /* 여러개를 import 할경우 해당 파일의 변수를 정확하게 써야 한다. 즉 export만 한건 이름 지켜야 한다. */
+    import 작명,{a as 별명,b} from './library.js';
+    
+    /* default로 export한건 항상 맨 앞에 둬야 한다. */
+/*     만약에 export로만 import 한것의 변수명을 바꾸고 싶을 경우! as 작명으로 쓸수 있다.
+a를 출력해보면 없다고 뜬다.
+*/
+
+   import c,* as 전체별명 from './library.js'; 
+  /* * 이거는 전부를 import한다 */
+  /* 별명 작명도 가능 */
+
+    console.log(별명,b,작명);
+    console.log("전체:::", 전체별명);
+    console.log("전체a:::", 전체별명.a);
+    console.log("전체b:::", 전체별명.b);
+   /*default는 위처럼 읽을 수 없음 무조건 아래처럼 */
+    console.log("전체c:::", c);
+
+
+    /* 옛날 방식 import*/
+    /* require(./library.js) */
+    /* var 임포트해온것들 = require(경로) */
+
+    /* 단점! */
+    /* 호환성이 너무 떨어짐 ie에서 불가 그럴 경우 아래 src로 개발을 해라   */
+  </script>
+  <script src="./script.js"></script>
+  <!-- 보통은 여기서 -->
+</body>
+
+</html>
