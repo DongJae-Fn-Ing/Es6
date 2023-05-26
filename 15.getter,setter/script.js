@@ -67,3 +67,95 @@ class 사람A {
 }
 
 var 사람3 = new 사람A();
+
+/* 문제 풀이 */
+
+/* 아래 오브젝트를 만드는 class 만들어라 */
+/* var 강아지1 = { type : '말티즈', color : 'white' };
+var 강아지2 = { type : '진돗개', color : 'brown' };  */
+
+class 강아지 {
+  constructor(a, b) {
+    this.type = a;
+    this.color = b;
+  }
+  한살먹기() {
+    /* 여기서는 에러 */
+    if (this.age === undefined) {
+      throw Error("에러임");
+    } else {
+      return this.age;
+    }
+  }
+}
+
+var 강아지1 = new 강아지("말티즈", "white");
+var 강아지2 = new 강아지("진돗개", "brown");
+
+console.log("1번답-1:::", 강아지1);
+console.log("2번답-2:::", 강아지2);
+
+/* 2번 문제 강아지 값을 상속 받아서 고양이를 만들고 싶다 */
+/* var 고양이1 = { type : '코숏', color : 'white', age : 5 };
+var 고양이2 = { type : '러시안블루', color : 'brown', age : 2 };  */
+
+class 고양이 extends 강아지 {
+  constructor(a, b, c) {
+    super(a, b);
+    this.age = c;
+  }
+  한살먹기() {
+    return super.한살먹기() + 1;
+  }
+}
+
+var 고양이1 = new 고양이("코숏", "white", 5);
+var 고양이2 = new 고양이("러시안블루", "brown", 2);
+
+console.log("2번답-1:::", 고양이1);
+console.log("2번답-2:::", 고양이2);
+
+/* 고양이와 강아지 object들에 기능을 하나 추가*/
+
+고양이2.한살먹기();
+
+/* 3번 문제 추가 고민  강아지에서 오류가 안뜸 */
+
+class Unit {
+  constructor() {
+    this.공격력 = 5;
+    this.체력 = 100;
+  }
+  get battlePoint() {
+    return this.공격력 + this.체력;
+  }
+  set heal(power) {
+    this.체력 = this.체력 + power;
+  }
+}
+
+/* 인스턴스는 class로부터 새로생성되는 오브젝트 */
+var 마린 = new Unit();
+마린.heal = 50;
+console.log("4번답-1:::", 마린.battlePoint);
+console.log("4번답-2:::", 마린);
+
+var data = {
+  odd: [],
+  even: [],
+  get 정렬() {
+    return [...this.odd, ...this.even].sort();
+  },
+  set 저장(a) {
+    var number = [...a];
+    var numberArr = number.map(Number);
+    return (
+      this.odd.push(numberArr.filter((num) => num % 2 === 0)),
+      this.even.push(numberArr.filter((num) => num % 2 === 1)),
+      this.정렬
+    );
+  },
+};
+data.저장 = "54123";
+console.log("5번답::", data);
+/* 나중에 다시 풀기 */
