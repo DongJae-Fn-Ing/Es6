@@ -65,9 +65,48 @@ var 프로미스3 = new Promise(function (성공, 실패) {
 /* 비동기적 처리가 가능하게 바꿔주는 마법의 문법이 아님 */
 /* 그냥 콜백함수 디자인의 대체품임 */
 
-
 /* Promise 적용된 곳들 */
 /* 제이쿼리 에이잭스 jQuery.ajax() */
 /* 자바스크립트 fetch() */
-/* fetch()를 사용하면 그 자리에 Promise를 리턴함 */ 
+/* fetch()를 사용하면 그 자리에 Promise를 리턴함 */
 /* fetch().then().catch() */
+
+/* Promise 문제 */
+
+var img = document.getElementById("test");
+
+var imgLoding = new Promise((성공, 실패) => {
+  img.addEventListener("load", () => {
+    성공();
+  });
+  img.addEventListener("error", () => {
+    실패();
+  });
+});
+
+imgLoding
+  .then(() => {
+    console.log("1번답 성공시::: 성공!");
+  })
+  .catch(() => {
+    console.log("1번답 실패시::: 실패!");
+  });
+/* 2번 문제 */
+
+fetch("https://codingapple1.github.io/hello.txt")
+  .then((response) => response.text())
+  .then((data) => console.log(data))
+  .then(() => {
+    fetch("https://codingapple1.github.io/hello2.txt")
+      .then((response2) => response2.text())
+      .then((data2) => console.log(data2))
+      .catch(() => {
+        console.log("2중실패");
+      });
+  })
+  .catch(() => {
+    console.log("2번답::: 호출 실패얌");
+  });
+
+/* var helloText = new Promise((성공, 실패) => {}); */
+/* 맞았지만 한번 더 풀어봐 */
